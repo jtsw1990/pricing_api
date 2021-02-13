@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from risk_model.tech_model import TechnicalRiskModel
+from utils.get_artefacts import get_schema
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,9 +14,11 @@ class Status(Resource):
 
 class PricingAPI(Resource):
     # Insert methods here for GET/POST/DELETE ecti.
-
+	
+		
+	
     def get(self):
-        return {"Schema": "Placeholder"}, 200
+        return get_schema(), 200
 
     def post(self):
         #parser = reqparse.RequestParser()

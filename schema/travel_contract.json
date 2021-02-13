@@ -10,13 +10,14 @@
 								"Coverable.travel_end_date": "date",
 								"Coverage": {
 										"Coverage.coverage_type_code": "string",
-										"Coverage.coverage_sum_insured": "real",
+										"Coverage.coverage_sum_insured": "real"
+								},
 								"Traveller": {
 										"Traveller.date_of_birth": "date",
 										"Traveller.dependent_flag": "string",
 										"Traveller.gender_code": "string"
 								}
-								}
+								
 						}
 				}
 		},
