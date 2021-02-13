@@ -1,27 +1,18 @@
 {
 		"request": {
-				"Policy": {
-						"Policy.policy_number": "string",
-						"Policy.brand_code": "string",
-						"Policy.transaction_date": "date",
-						"Coverable": {
-								"Coverable.destination_region": "string",
-								"Coverable.travel_start_date": "date",
-								"Coverable.travel_end_date": "date",
-								"Coverage": {
-										"Coverage.coverage_type_code": "string",
-										"Coverage.coverage_sum_insured": "real"
-								},
-								"Traveller": {
-										"Traveller.date_of_birth": "date",
-										"Traveller.dependent_flag": "string",
-										"Traveller.gender_code": "string"
-								}
-								
-						}
-				}
-		},
+			"Policy.policy_number": "string",
+			"Policy.brand_code": "string",
+			"Policy.transaction_date": "date",
+			"Coverable.destination_region": "string",
+			"Coverable.travel_start_date": "date",
+			"Coverable.travel_end_date": "date",
+			"Coverable.ski_flag": "string",
+			"Coverable.pre_existing_medical_flag": "string",
+			"Traveller.date_of_birth": "date",
+			"Traveller.dependent_flag": "string",
+			"Traveller.gender_code": "string"
+			},
 		"response": {
-				"Policy.final_premium": "real"
+			"Policy.final_premium": "real"
 		}
 }
