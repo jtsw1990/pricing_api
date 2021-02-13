@@ -1,0 +1,11 @@
+data_column,global_variable
+policy_number,Policy.policy_number
+brand_code,Policy.brand_code
+destination_region,Coverable.destination_region
+travel_start_date,Coverable.travel_start_date
+travel_end_date,Coverable.travel_end_date
+ski_flag,Coverable.ski_flag
+pre_existing_medical_flag,Coverable.pre_existing_medical_flag
+date_of_birth,Traveller.date_of_birth
+dependent_flag,Traveller.dependent_flag
+gender_code,Traveller.gender_code

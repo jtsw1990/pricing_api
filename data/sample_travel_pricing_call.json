@@ -1,32 +1,13 @@
-[
-		"Policy": {
-				"Policy.policy_number": "TEST_POLICY",
-				"Policy.brand_code": "TEST_BRAND",
-				"Policy.transaction_date": "13/02/2021",
-				"Coverable": [
-						{
-							"Coverable.destination_region": "ASIA",
-							"Coverable.travel_start_date": "15/02/2021",
-							"Coverable.travel_end_date": "20/02/2021",
-							"Coverage": [
-								{
-										"Coverage.coverage_type_code": "PRE_TRIP_COVER",
-										"Coverage.coverage_sum_insured": "5000"
-								},
-								{
-										"Coverage.coverage_type_code": "MEDICAL",
-										"Coverage.coverage_sum_insured": "20000"
-								}
-						],
-						"Traveller": [
-								{
-									"Traveller.date_of_birth": "12/31/1990",
-									"Traveller.dependent_flag": "N",
-									"Traveller.gender_code": "MALE"
-							}
-						]
-					}
-				]
-				
-		}
-]
+{
+	"Policy.policy_number": "TEST_POLICY",
+	"Policy.brand_code": "TEST_BRAND",
+	"Policy.transaction_date": "13/02/2021",
+	"Coverable.destination_region": "ASIA",
+	"Coverable.travel_start_date": "15/02/2021",
+	"Coverable.travel_end_date": "20/02/2021",
+	"Coverable.ski_flag": "N",
+	"Coverable.pre_existing_medical_flag": "N",
+	"Traveller.date_of_birth": "31/12/1990",
+	"Traveller.dependent_flag": "N",
+	"Traveller.gender_code": "FEMALE"
+}
