@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
-
+from risk_model.tech_model import TechnicalRiskModel
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,18 +14,22 @@ class Status(Resource):
 class PricingAPI(Resource):
     # Insert methods here for GET/POST/DELETE ecti.
 
-    def get(self)
+    def get(self):
         return {"Schema": "Placeholder"}, 200
 
     def post(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument("TestingField", required=True)
+        #parser = reqparse.RequestParser()
+        #parser.add_argument("TestingField", required=True)
 
-        args = parser.parse_args()
-        # import model
-
+        #args = parser.parse_args()
+        
         # reformat into JSON output
-        return {"Reporting parameters": "Placeholder"}, 200
+        model = TechnicalRiskModel()
+        price = model.placeholder_tech_price()
+        return {"placeholder_premium": price}, 200
 
-api.add_resource("PricingAPI", "/pricing")
-api.add_resource("Status", "/healthcheck")
+api.add_resource(PricingAPI, "/pricing")
+api.add_resource(Status, "/healthcheck")
+
+if __name__ == "__main__":
+    app.run()
