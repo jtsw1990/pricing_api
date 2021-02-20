@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from risk_model.tech_model import TechnicalRiskModel
 from utils.get_artefacts import get_schema
+from utils.parse_call import parse_pricing_call
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,14 +22,14 @@ class PricingAPI(Resource):
         return get_schema(), 200
 
     def post(self):
+        # TODO: read in contract + reqparser
         #parser = reqparse.RequestParser()
         #parser.add_argument("TestingField", required=True)
 
         #args = parser.parse_args()
         
-        # reformat into JSON output
-        model = TechnicalRiskModel()
-        price = model.placeholder_tech_price()
+        # TODO: link in tech model
+
         return {"placeholder_premium": price}, 200
 
 api.add_resource(PricingAPI, "/pricing")

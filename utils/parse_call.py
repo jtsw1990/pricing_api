@@ -1,24 +1,18 @@
-class Contract:
-   
-    '''
-    Contract class?
+import json
+import pandas as pd
 
-    '''
-    def __init__(self, contract):
-        self.contract = contract
+def parse_pricing_call(json_input, mapping_table):
+    with open(json_input) as f:
+        call = json.load(f)
 
-    def __repr__(self):
-        return "Parser object"
+    mapping_table = pd.read_csv(mapping_table)
     
-    def parse_dates(self):
-        pass
+    call_mapped = {mapping_dict[key]: value for (key, value) in call.items()}
 
-    def parse_strings(self):
-        pass
+    return call_mapped
 
-    def parse_numeric(self):
-        pass
+if __name__ == "__main__":
+
+   call_mapped = parse_pricing_call(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\sample_travel_pricing_call.json", r"C:\Users\jtsw1\Desktop\projects\pricing_api\mapping_tables\travel_mapping.csv")
 
 
-class ParseContract(ParseInput):
-    pass

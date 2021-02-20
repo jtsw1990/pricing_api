@@ -7,6 +7,7 @@ import numpy
 import pickle
 
 
+
 class TechnicalRiskModel:
     
     def __init__(self):
@@ -43,18 +44,22 @@ class TechnicalRiskModel:
 
 
     def train_tech_model(self, X_train, y_train):
-        model = LinearRegression.fit(X_train, y_train)
+        self.model = LinearRegression().fit(X_train, y_train)
         # TODO: add some output logs and statistics
+        # TODO: add timestamps and string formatting in output
         filename = "latest_model.sav"
-        pickle.dump(model, open(filename, "wb"))
+        pickle.dump(self.model, open(filename, "wb"))
 
     def score_tech_model(self, pricing_call, pricing_rule):
-        return 50
+        loaded_model = pickle.load(open(pricing_rule, "rb"))
+        # return loaded_model.predict(pricing_call)
+        return loaded_model
 
 
 if __name__ == "__main__":
    src = TechnicalRiskModel()
    df = src.data_reader(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\pif_data.csv")
    X_train, X_test, y_train, y_test, col_names = src.data_preprocessor(df, ["destination_region", "ski_flag", "gender_code", "date_of_birth"])
-
+   src.train_tech_model(X_train, y_train)
+   loaded_model = src.score_tech_model(1, "latest_model.sav")
 

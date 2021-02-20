@@ -9,3 +9,4 @@ pre_existing_medical_flag,Coverable.pre_existing_medical_flag
 date_of_birth,Traveller.date_of_birth
 dependent_flag,Traveller.dependent_flag
 gender_code,Traveller.gender_code
+transaction_date,Policy.transaction_date
