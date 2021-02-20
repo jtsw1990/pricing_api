@@ -55,7 +55,7 @@ class TechnicalRiskModel:
         loaded_model = pickle.load(open(pricing_rule, "rb"))
         pricing_call_parsed = self._preprocessor.transform(pd.DataFrame(pricing_call, index=[0]))
    
-        return loaded_model.predict(pricing_call_parsed)
+        return loaded_model.predict(pricing_call_parsed)[0]
 
 
 if __name__ == "__main__":

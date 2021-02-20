@@ -30,9 +30,11 @@ class PricingAPI(Resource):
         {parser.add_argument(key, required=False) for (key, value) in request.items()}
         args = parser.parse_args()
         mapped_args = parse_pricing_call(args, os.path.join(os.getcwd(), "mapping_tables/travel_mapping.csv"))
-        # TODO: link in tech model
-        
-        pricing_response = TechnicalRiskModel().score_tech_model(mapped_args, os.path.join(os.getcwd(), "risk_model/latest_model.sav"))
+        # TODO: separate preprocessor with other steps to avoid always reading
+        src = TechnicalRiskModel()
+        df = src.data_reader(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\pif_data.csv")
+        X, y, col_names = src.data_preprocessor(df, ["destination_region", "ski_flag", "gender_code", "date_of_birth"])        
+        pricing_response = src.score_tech_model(mapped_args, os.path.join(os.getcwd(), "risk_model/latest_model.sav"))
         
 
         return {"placeholder_premium": pricing_response}, 200
