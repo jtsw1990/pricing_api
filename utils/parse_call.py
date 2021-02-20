@@ -2,11 +2,12 @@ import json
 import pandas as pd
 
 def parse_pricing_call(json_input, mapping_table):
-    with open(json_input) as f:
-        call = json.load(f)
+    call = json_input
+    # with open(json_input) as f:
+    #    call = json.load(f)
 
     mapping_table = pd.read_csv(mapping_table)
-    
+    mapping_dict = dict(zip(mapping_table["global_variable"], mapping_table["data_column"]))
     call_mapped = {mapping_dict[key]: value for (key, value) in call.items()}
 
     return call_mapped

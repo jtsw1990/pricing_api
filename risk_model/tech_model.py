@@ -28,22 +28,23 @@ class TechnicalRiskModel:
                     ("categorical", OneHotEncoder(sparse=False, handle_unknown="ignore"), self._cat_features)
                     ]
                 )
-        X_train, X_test, y_train, y_test = train_test_split(
-                df[self._rating_factors_col],
-                df[self._claims_col],
-                test_size=0.2,
-                random_state=123
-                )
-        ohe_categories = self._preprocessor.fit(X_train).named_transformers_["categorical"].categories_
+        X, y = df[self._rating_factors_col], df[self._claims_col]
+        
+        ohe_categories = self._preprocessor.fit(X).named_transformers_["categorical"].categories_
         ohe_categories_concat = [f"{col}_{val}" for col, vals in zip(self._cat_features, ohe_categories) for val in vals]
         self._rating_factors_encoded = self._num_features + ohe_categories_concat
-        self._preprocessor.fit(X_train)
-        X_train = self._preprocessor.transform(X_train)
-        X_test = self._preprocessor.transform(X_test)
-        return X_train, X_test, y_train, y_test, self._rating_factors_encoded
+        self._preprocessor.fit(X)
+        X = self._preprocessor.transform(X)
+        return X, y, self._rating_factors_encoded
 
 
-    def train_tech_model(self, X_train, y_train):
+    def train_tech_model(self, X, y):
+        X_train, X_test, y_train, y_test = train_test_split(
+            X,
+            y,
+            test_size=0.2,
+            random_state=123
+        )
         self.model = LinearRegression().fit(X_train, y_train)
         # TODO: add some output logs and statistics
         # TODO: add timestamps and string formatting in output
@@ -52,14 +53,24 @@ class TechnicalRiskModel:
 
     def score_tech_model(self, pricing_call, pricing_rule):
         loaded_model = pickle.load(open(pricing_rule, "rb"))
-        # return loaded_model.predict(pricing_call)
-        return loaded_model
+        pricing_call_parsed = self._preprocessor.transform(pd.DataFrame(pricing_call, index=[0]))
+   
+        return loaded_model.predict(pricing_call_parsed)
 
 
 if __name__ == "__main__":
-   src = TechnicalRiskModel()
-   df = src.data_reader(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\pif_data.csv")
-   X_train, X_test, y_train, y_test, col_names = src.data_preprocessor(df, ["destination_region", "ski_flag", "gender_code", "date_of_birth"])
-   src.train_tech_model(X_train, y_train)
-   loaded_model = src.score_tech_model(1, "latest_model.sav")
+    import os
+    import json
+
+    src = TechnicalRiskModel()
+    df = src.data_reader(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\pif_data.csv")
+    X, y, col_names = src.data_preprocessor(df, ["destination_region", "ski_flag", "gender_code", "date_of_birth"])
+    src.train_tech_model(X, y)
+    with open(r"C:\Users\jtsw1\Desktop\projects\pricing_api\data\sample_travel_pricing_call.json") as f:
+        call = json.load(f)    
+    
+    mapping_table = pd.read_csv(r"C:\Users\jtsw1\Desktop\projects\pricing_api\mapping_tables\travel_mapping.csv")
+    mapping_dict = dict(zip(mapping_table["global_variable"], mapping_table["data_column"]))
+    call_mapped = {mapping_dict[key]: value for (key, value) in call.items()}
+    premium = src.score_tech_model(call_mapped, "latest_model.sav")
 

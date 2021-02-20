@@ -7,7 +7,7 @@
 	"Coverable.travel_end_date": "20/02/2021",
 	"Coverable.ski_flag": "N",
 	"Coverable.pre_existing_medical_flag": "N",
-	"Traveller.date_of_birth": "31/12/1990",
+	"Traveller.date_of_birth": 34,
 	"Traveller.dependent_flag": "N",
 	"Traveller.gender_code": "FEMALE"
 }
