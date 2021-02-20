@@ -23,17 +23,7 @@ class TechnicalRiskModel:
                     ("categorical", OneHotEncoder(sparse=False, handle_unknown="ignore"), self._cat_features)
                     ]
                 )
-        X_train, X_test, y_train, y_test = train_test_split(
-                df[self._rating_factors_col],
-                df[claims_col],
-                test_size=0.2,
-                random_state=123
-                )
-        ohe_categories = preprcesser.fit(X_train).named_transformers_["categorical"].categories_
-        ohe_categories_concat = [f"{col}_{val}" for col, val in zip(self._cat_features, ohe_categories) for val in vals]
-        self._rating_factors_encoded = num_features + ohe_categories_concat
-        return X_train, X_test, y_train, y_test, self._rating_factors_encoded
-
+        
 
     def train_tech_model(self, data):
         pass
