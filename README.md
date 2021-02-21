@@ -3,6 +3,7 @@ End to end pricing system for insurance pricing
 
 ## Overall design
 
+![high_level_design](/assets/high_level_design.png)
 
 ## Components
 - Product (Travel? since its alot simpler)
