@@ -1,11 +1,13 @@
 # pricing_api
 End to end pricing system for insurance pricing
+
 General framework that can be used as a base proof of concept for other projects
+
 TODO: Add commercial pricing algorithm component. This goes in between response and technical model outputs.
 
 ## Overall design
 
-![high_level_design](/assets/high_level_design.png)
+<img src="assets/high_level_design.png" alt="high_level_design" width="250" height="250">
 
 ## Components
 - Product (Travel? since its alot simpler)
@@ -49,5 +51,5 @@ This is to be replaced once structure is built.
 
 ## How to use
 1. Download an API development tool. Testing and building was done using [POSTMAN](https://www.postman.com/downloads/)
-TODO: Insert instructions for getting schemas and mappings
-TODO: Contact digitcal ocean for backend hosting 
+2. TODO: Insert instructions for getting schemas and mappings
+3. TODO: Contact digitcal ocean for backend hosting 

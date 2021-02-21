@@ -7,7 +7,7 @@ TODO: Add commercial pricing algorithm component. This goes in between response 
 
 ## Overall design
 
-<img src="assets/high_level_design.png" alt="high_level_design" width="250" height="250">
+<img src="assets/high_level_design.png" alt="high_level_design" width="400" height="300">
 
 ## Components
 - Product (Travel? since its alot simpler)
