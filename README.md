@@ -53,3 +53,10 @@ This is to be replaced once structure is built.
 1. Download an API development tool. Testing and building was done using [POSTMAN](https://www.postman.com/downloads/)
 2. TODO: Insert instructions for getting schemas and mappings
 3. TODO: Contact digitcal ocean for backend hosting 
+
+## Outstanding tickets
+- Write unit tests
+- Decide on front end platform/ design
+- Look up on webhosting services
+- Decide on class structure for models
+- Integrate contract and mappings into response
