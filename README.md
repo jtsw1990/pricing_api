@@ -1,5 +1,7 @@
 # pricing_api
 End to end pricing system for insurance pricing
+General framework that can be used as a base proof of concept for other projects
+TODO: Add commercial pricing algorithm component. This goes in between response and technical model outputs.
 
 ## Overall design
 
@@ -12,9 +14,19 @@ End to end pricing system for insurance pricing
 - Pricing Engine (Placeholder statistical model)
 - Back end webhosting service
 
+### Products
+Currently doing travel. Build should be done keeping in mind that extensibility is extremely important.
+Interchangeable components:
+- Contract
+- Mapping table
+- Technical Model
+Classes should be written around these constraints
+
 
 ### Front End
-
+Front end platform TBC
+- Mobile (kotlin) based app
+- Flask based web application
 
 ### REST API
 
@@ -34,3 +46,8 @@ Travel algorithm currently consists of a very simplified linear regression model
 This is to be replaced once structure is built.
 
 ### Server
+
+## How to use
+1. Download an API development tool. Testing and building was done using [POSTMAN](https://www.postman.com/downloads/)
+TODO: Insert instructions for getting schemas and mappings
+TODO: Contact digitcal ocean for backend hosting 
