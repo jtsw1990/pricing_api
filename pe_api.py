@@ -37,7 +37,7 @@ class PricingAPI(Resource):
         pricing_response = src.score_tech_model(mapped_args, os.path.join(os.getcwd(), "risk_model/latest_model.sav"))
         
 
-        return {"placeholder_premium": pricing_response}, 200
+        return {"Policy.final_premium": pricing_response}, 200
 
 api.add_resource(PricingAPI, "/pricing")
 api.add_resource(Status, "/healthcheck")
