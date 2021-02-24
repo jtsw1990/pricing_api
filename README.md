@@ -38,8 +38,8 @@ Current test build runs on `http://127.0.0.1:5000`
 | URI           | Resource      | Description | Implemented |
 | ------------- |:-------------:| -----------:| -----------:|
 | /healthcheck | GET | Returns status of the server | Y |
-| /pricing | GET | Returns the contract for the current pricing algorithm |
-| /pricing | POST | Returns the price given a valid request body |
+| /pricing | GET | Returns the contract for the current pricing algorithm | Y |
+| /pricing | POST | Returns the price given a valid request body | Y |
 
 
 ### Pricing Engine
